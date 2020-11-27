@@ -16,6 +16,25 @@ class Home extends React.Component {
 		}
 	}
 
+	allTheCodes = async () => {
+		try {
+			let genres = await fetch(
+				`https://deezerdevs-deezer.p.rapidapi.com/genre/0`,
+				{
+					method: "GET",
+					headers: {
+						"x-rapidapi-key":
+							"e75d8629a2mshe74bcadd1131095p185f53jsn7e5fafda57bb",
+						"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+					},
+				}
+			)
+			genres = await genres.json()
+			console.log(genres)
+		} catch (error) {
+			console.error(error)
+		}
+	}
 	/**
 	 *
 	 * @param {*} category the category tofetch
@@ -52,6 +71,7 @@ class Home extends React.Component {
 	async componentDidMount() {
 		let artists = await this.fetchArtistsByCategory()
 		this.setState({ artists })
+		this.allTheCodes()
 	}
 	async componentDidUpdate() {
 		console.log("artists", this.state.artists, "code", this.state.activeCode)

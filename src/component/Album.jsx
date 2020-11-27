@@ -9,6 +9,7 @@ import {
 	Row,
 } from "react-bootstrap"
 import { Link, withRouter } from "react-router-dom"
+//import Comments from "./Comments"
 
 class Album extends React.Component {
 	constructor(props) {
@@ -48,6 +49,7 @@ class Album extends React.Component {
 						<Col md="6">
 							<Card>
 								<Card.Img variant="top" src={this.state.album.cover_xl} />
+								<Card.Body>comments coming soon</Card.Body>
 							</Card>
 						</Col>
 						<Col md="6">

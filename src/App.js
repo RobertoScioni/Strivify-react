@@ -8,6 +8,7 @@ import Player from "./component/Player"
 import Sidebar from "./component/Sidebar"
 import Artist from "./component/Artist"
 import Album from "./component/Album"
+import { Container } from "react-bootstrap"
 class App extends React.Component {
 	constructor(props) {
 		super(props)
@@ -20,16 +21,22 @@ class App extends React.Component {
 	render() {
 		return (
 			<>
-				<Sidebar />
-				<Router>
-					<Route exact path="/" component={Home}></Route>
-					<Route path="/Artist/:id" component={Artist}></Route>
-					<Route
-						path="/Album/:id"
-						render={(props) => <Album {...props} play={this.play} />}
-					></Route>
-				</Router>
-				<Player song={this.state.nowPlaying} />
+				<Container>
+					<Row>
+						<Sidebar />
+						<Router>
+							<Route exact path="/" component={Home}></Route>
+							<Route path="/Artist/:id" component={Artist}></Route>
+							<Route
+								path="/Album/:id"
+								render={(props) => <Album {...props} play={this.play} />}
+							></Route>
+						</Router>
+					</Row>
+					<Row>
+						<Player song={this.state.nowPlaying} />
+					</Row>
+				</Container>
 			</>
 		)
 	}
